@@ -1,0 +1,42 @@
+<Beginning python>
+13:
+python db api:
+apilevel
+threadsafety
+paramstyle
+
+
+
+>>> dir(MySQLdb)
+['BINARY', 'Binary', 'Connect', 'Connection', 'DATE', 'DATETIME', 'DBAPISet', 'DataError', 'DatabaseError', 'Date', 'DateFromTicks', 'Error', 'FIELD_TYPE', 'IntegrityError', 'InterfaceError', 'InternalError', 'MySQLError', 'NULL', 'NUMBER', 'NotSupportedError', 'OperationalError', 'ProgrammingError', 'ROWID', 'STRING', 'TIME', 'TIMESTAMP', 'Time', 'TimeFromTicks', 'Timestamp', 'TimestampFromTicks', 'Warning', '__all__', '__author__', '__builtins__', '__doc__', '__file__', '__name__', '__package__', '__path__', '__revision__', '__version__', '_mysql', 'apilevel', 'connect', 'connection', 'constants', 'debug', 'escape', 'escape_dict', 'escape_sequence', 'escape_string', 'get_client_info', 'paramstyle', 'release', 'result', 'server_end', 'server_init', 'string_literal', 'test_DBAPISet_set_equality', 'test_DBAPISet_set_equality_membership', 'test_DBAPISet_set_inequality', 'test_DBAPISet_set_inequality_membership', 'thread_safe', 'threadsafety', 'times', 'version_info']
+>>> help(MySQLdb.apilevel)
+no Python documentation found for '2.0'
+
+>>> MySQLdb.apilevel
+'2.0'
+>>> type(MySQLdb.apilevel)
+<type 'str'>
+>>> MySQLdb.threadsafety
+1
+>>> MySQLdb.paramstyle
+'format'
+
+DB api中使用的异常层级
+StandardError
+	Warning
+	Error
+		InterfaceError
+		DatabaseError
+			DataError
+			OperationalError
+			IntergrityError
+			InternalError
+			ProgrammingError
+			NotSupportedError
+
+
+MySQLdb.connect(*arg,**kargs)->连接对象(数据库会话)
+
+MySQLdb.connect.cursor()下面还有许多方法.
+为何使用游标：
+         使用游标(cursor)的一个主要的原因就是把集合操作转换成单个记录处理方式。用SQL语言从数据库中检索数据后，结果放在内存的一块区域中，且结果往往是一个含有多个记录的集合。游标机制允许用户在SQL server内逐行地访问这些记录，按照用户自己的意愿来显示和处理这些记录。
