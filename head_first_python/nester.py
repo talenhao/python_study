@@ -2,9 +2,9 @@
 #-*- coding:utf-8 -*-
 '''
 打印电影信息
-version = 1.1.0
+version = 1.1.1
 '''
-def print_lol(the_list, level):
+def print_lol(the_list, level=0):
     for each_item in the_list:
         '''
         判断元素是否为列表类型.
