@@ -31,3 +31,17 @@ except IOError as ioerr2:
 #不要忘记处理pickle异常
 except pickle.PickleError as perr:
     print('Pickleing error: %s ' % perr)
+
+
+#读取pickle dump的文件
+
+try:
+    with open('man_data.txt', 'rb') as rman, open('other_data.txt', 'rb') as rother:
+        rman_file = pickle.load(rman)
+        rother_file = pickle.load(rother)
+        print(rman_file)
+        print(rother_file)
+except IOError as IOE:
+    print('file error %s'%IOE)
+except pickle.PickleError as pperr :
+    print('pickle error %s' % pperr)
