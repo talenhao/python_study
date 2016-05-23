@@ -28,3 +28,7 @@ for name in ["james", "julie", "mikey", "sarah"]:
     for each_t in thelist:
         cleanname.append(sanitize(each_t))
     print(sorted(cleanname))
+    #使用列表推导式
+    print('use list comprehension')
+    cleanname2 = [sanitize(each_it) for each_it in thelist]
+    print(sorted(cleanname2))
