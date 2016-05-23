@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 def filetolist(file,listname):
-    #打开文件
-    with open(file) as jaf:
-        #读取数据行
-        data = jaf.readline()
-    #转换成list
-    listname=data.strip().split(',')
-    return listname
-
+    try:
+        #打开文件
+        with open(file) as jaf:
+            #读取数据行
+            data = jaf.readline()
+        #转换成list
+        listname=data.strip().split(',')
+        return listname
+    except IOError as ioerr:
+        print('File error : %s' % ioerr)
+        return(None)
         
 #处理字符,转换成m.s格式
 def sanitize(time_string):
