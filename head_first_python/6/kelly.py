@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+#函数与处理的数据打包一起.
 def filetolist(file,listname):
     try:
         #打开文件
@@ -8,7 +9,13 @@ def filetolist(file,listname):
             data = jaf.readline()
         #转换成list
         listname=data.strip().split(',')
-        return listname
+        data = {}
+        data['name'] = listname.pop(0)
+        data['dob']  = listname.pop(0)
+        data['time'] = listname
+        result = print(data['name'] + '的三次最佳成绩是' + str(sorted(set([sanitize(each_it) for each_it in data['time']]))[0:3]))
+        #return listname
+        return result
     except IOError as ioerr:
         print('File error : %s' % ioerr)
         return(None)
@@ -26,9 +33,9 @@ def sanitize(time_string):
 
 for name in ["james", "julie", "mikey", "sarah"]:
     thelist=filetolist(name+".txt",name)
-    username=name+'user'
-    userdob =name+'dob'
     #使用列表
+    #username=name+'user'
+    #userdob =name+'dob'
     #username = thelist.pop(0)
     #userdob  = thelist.pop(0)
     ##使用列表推导式
@@ -39,9 +46,4 @@ for name in ["james", "julie", "mikey", "sarah"]:
     #except TypeError as typerr:
     #    print('list type error %s' % typerr)
     #使用字典
-    data = {}
-    data['name'] = thelist.pop(0)
-    data['dob']  = thelist.pop(0)
-    data['time'] = thelist
-    print(data['name'] + '的三次最佳成绩是' + str(sorted(set([sanitize(each_it) for each_it in data['time']]))[0:3]))
 
