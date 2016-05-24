@@ -1,11 +1,9 @@
-#从string模块中导入类,支持简单的字符串替换模板.
+
 from string import Template
 
-#生成文件类型
 def start_response(resp="text/html"):
     return('Content-type: ' + resp + '\n\n')
 
-#
 def include_header(the_title):
     with open('templates/header.html') as headf:
         head_text = headf.read()
