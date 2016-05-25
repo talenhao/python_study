@@ -45,7 +45,7 @@ def get_from_store():
     all_athletes = {}
     #pickle数据解压
     try:
-        with open('athletes.pickle','rb') as athlfile:
+        with open('data/athletes.pickle','rb') as athlfile:
             all_athletes=pickle.load(athlfile)
     except IOError as ioerr:
         print('File error(%s)' % ioerr)
