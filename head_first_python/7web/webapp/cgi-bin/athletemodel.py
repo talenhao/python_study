@@ -35,7 +35,7 @@ def put_to_store(files_list):
         all_athletes[each_athlete.name] = each_athlete
     #pickle数据压制
     try:
-        with open('data/athletes.pickle','wb') as athlfile:
+        with open('../data/athletes.pickle','wb') as athlfile:
             pickle.dump(all_athletes,athlfile)
     except IOError as ioerr:
         print('File error(%s)' % ioerr)
@@ -45,12 +45,16 @@ def get_from_store():
     all_athletes = {}
     #pickle数据解压
     try:
-        with open('data/athletes.pickle','rb') as athlfile:
+        with open('../data/athletes.pickle','rb') as athlfile:
             all_athletes=pickle.load(athlfile)
     except IOError as ioerr:
         print('File error(%s)' % ioerr)
     return(all_athletes)
-
+#打印运动员的名字
+def get_names_from_store():
+    athletes = get_from_store()
+    response = [athletes[each_athlete].name for each_athlete in athletes]
+    return response
 #files_list = ["../data/james.txt", "../data/julie.txt", "../data/mikey.txt", "../data/sarah.txt"]
 #data = put_to_store(files_list)
 #test

@@ -9,6 +9,13 @@ class athletelist(list):
     @property
     def top3(self):
         return(sorted(set([sanitize(t) for t in self]))[0:3])
+    @property
+    def to_dict(self):
+        return({
+            'name':self.name,
+            'dob':self.dob,
+            'top3':self.top3      
+            })
 
 #处理字符,转换成m.s格式
 def sanitize(time_string):
