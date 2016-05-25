@@ -3,7 +3,7 @@ from string import Template
 
 #生成文件类型
 def start_response(resp="text/html"):
-    return('Content-type: ' + resp + '\n\n')
+    return('Content-type: ' + resp + ';charset=utf-8\n\n')
 
 #
 def include_header(the_title):
