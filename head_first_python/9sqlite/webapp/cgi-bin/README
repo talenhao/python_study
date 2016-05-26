@@ -1,0 +1,5 @@
+数据库初始化
+python3 oldmodel.py 
+python3 createDBtables.py 
+python3 initDBathletes.py 
+
