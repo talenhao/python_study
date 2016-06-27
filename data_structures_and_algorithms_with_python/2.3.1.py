@@ -12,14 +12,14 @@ def main():
     file.write('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n')
     file.write('<Plot title="Average List Element Access Time">\n')
     #这一部分处理时间
-    #test list size 10-200
-    xmin=10
-    xmax=200
+    #test list size 100-2000
+    xmin=100
+    xmax=2000
     #test list in xlist,time in ylist
     xlist=[]
     ylist=[]
     
-    for x in range(xmin,xmax,10):
+    for x in range(xmin,xmax,1):
         xlist.append(x)
         prod=0
         
@@ -30,8 +30,8 @@ def main():
         
         #开始时间
         starttime=datetime.datetime.now()
-        #随机处理1000次
-        for v in range(10):
+        #随机处理100次
+        for v in range(100):
             index = random.randint(0,x-1)
             var = lst[index]
             prod=prod*var
@@ -52,7 +52,21 @@ def main():
         file.write('            <DataPoint x="'+str(xlist[i])+'" y="'+str(ylist[i])+'"/>\n')            
     file.write('    </Sequence>\n')
     #这一部分访问时间
-    
+    xlist=lst
+    ylist=[0]*2000
+    time.sleep(2)
+    for i in range(50):
+        starttime=datetime.datetime.now()
+        index=random.randint(0,2000-1)
+        xlist[index]=xlist[index]+1
+        endtime=datetime.datetime.now()
+        deltaT=endtime-starttime
+        ylist[index]=ylist[index]+deltaT.total_seconds()*1000000
+    file.write('    <Sequence title="Access Time Distribution" color="blue">\n')
+    for i in range(len(xlist)):
+        if xlist[i] > 0:
+            file.write('        <DataPoint x="'+str(i)+'" y="'+str(ylist[i]/xlist[i])+'"/>\n')
+    file.write('    </Sequence>\n')     
     #收尾及关闭文件
     file.write('</Plot>\n')
     file.close()
